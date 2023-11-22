@@ -1,4 +1,6 @@
+import 'package:block_provider/controller/list_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailPage extends StatelessWidget {
   DetailPage({super.key});
@@ -34,7 +36,8 @@ class DetailPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Spacer(),
+            SizedBox(height: s.height * 0.1),
+            // const Spacer(),
             Text(
               data['title'],
             ),
@@ -54,9 +57,14 @@ class DetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("\$ ${data['price']}"),
-                FloatingActionButton(onPressed: () {})
+                BlocBuilder<List_Controller, List<Map>>(
+                    builder: (context, state) {
+                  return FloatingActionButton(onPressed: () {
+                    context.read<List_Controller>().add(data);
+                  });
+                })
               ],
-            )
+            ),
           ],
         ),
       ),

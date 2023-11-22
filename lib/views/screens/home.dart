@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:block_provider/controller/get_data_controller.dart';
 import 'package:block_provider/utils/route_utils.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +10,12 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(MyRoutes.addedCart),
+                icon: const Icon(Icons.shopping_cart))
+          ],
           title: const Text("Counter"),
           centerTitle: true,
         ),

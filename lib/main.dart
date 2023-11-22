@@ -1,7 +1,9 @@
 import 'package:block_provider/controller/get_data_controller.dart';
 import 'package:block_provider/controller/counter_block.dart';
 import 'package:block_provider/controller/list_controller.dart';
+import 'package:block_provider/modals/alldata_modal.dart';
 import 'package:block_provider/utils/route_utils.dart';
+import 'package:block_provider/views/screens/added_Cart.dart';
 import 'package:block_provider/views/screens/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,8 +30,12 @@ class MyApp extends StatelessWidget {
       title: 'Block Provider',
       routes: {
         MyRoutes.detail: (context) => BlocProvider(
-              create: (_) => List_Controller([]),
+              create: (_) => List_Controller(MyModal.mylist),
               child: DetailPage(),
+            ),
+        MyRoutes.addedCart: (context) => BlocProvider(
+              create: (_) => List_Controller(MyModal.mylist),
+              child: const Added_Cart(),
             ),
       },
     );
